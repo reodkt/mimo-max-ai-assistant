@@ -34,6 +34,19 @@ Open `http://localhost:3000`.
 
 The app works in demo mode until real API credentials are added.
 
+## Deploy online
+
+This repo is ready for Vercel deployment:
+
+1. Import the GitHub repository into Vercel.
+2. Add environment variables:
+   - `MIMO_API_KEY`
+   - `MIMO_BASE_URL`
+   - `MIMO_MODEL`
+3. Deploy.
+
+The Vercel serverless endpoint lives in `api/chat.js`, while local development still uses `server.js`.
+
 ## Configure Mimo API access
 
 Create a local environment file from `.env.example`:
@@ -88,6 +101,8 @@ We are requesting access to Mimo Max 1.6B to build an Indonesian AI assistant th
 
 ```text
 server.js                 Static server and server-side Mimo API wrapper
+api/
+  chat.js                 Vercel serverless API wrapper
 public/
   index.html              Landing page, proposal section, and chat UI
   styles.css              Visual design
