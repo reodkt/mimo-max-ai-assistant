@@ -3,6 +3,9 @@ const http = require("http");
 const https = require("https");
 const path = require("path");
 
+loadEnvFile(".env.local");
+loadEnvFile(".env");
+
 const PORT = Number(process.env.PORT || 3000);
 const PUBLIC_DIR = path.join(__dirname, "public");
 
@@ -16,6 +19,36 @@ const MIME_TYPES = {
 
 const systemPrompt =
   "You are Mimo Max inside a responsible AI productivity demo. Give concise, practical answers and avoid unsafe or private-data requests.";
+
+function loadEnvFile(fileName) {
+  const filePath = path.join(__dirname, fileName);
+
+  if (!fs.existsSync(filePath)) {
+    return;
+  }
+
+  const lines = fs.readFileSync(filePath, "utf8").split(/\r?\n/);
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+
+    if (!trimmed || trimmed.startsWith("#")) {
+      continue;
+    }
+
+    const separatorIndex = trimmed.indexOf("=");
+    if (separatorIndex === -1) {
+      continue;
+    }
+
+    const key = trimmed.slice(0, separatorIndex).trim();
+    const value = trimmed.slice(separatorIndex + 1).trim().replace(/^["']|["']$/g, "");
+
+    if (key && !process.env[key]) {
+      process.env[key] = value;
+    }
+  }
+}
 
 function sendJson(response, statusCode, payload) {
   response.writeHead(statusCode, {
