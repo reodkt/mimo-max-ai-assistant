@@ -79,12 +79,31 @@ function renderTable(lines) {
   return `<div class="table-wrap"><table>${header}<tbody>${bodyRows}</tbody></table></div>`;
 }
 
-function formatAssistantReply(content) {
-  const lines = String(content || "")
+function normalizeAssistantText(content) {
+  return String(content || "")
     .replace(/\r\n/g, "\n")
+    .replace(/```[\s\S]*?```/g, (match) =>
+      match
+        .replace(/```/g, "\n")
+        .replace(/[┌┐└┘├┤┬┴┼─│═║╔╗╚╝╠╣╦╩╬]/g, " ")
+    )
+    .replace(/[┌┐└┘├┤┬┴┼─│═║╔╗╚╝╠╣╦╩╬]/g, " ")
+    .replace(/\s+---+\s+/g, "\n")
+    .replace(/\s+(#{1,4}\s+)/g, "\n$1")
+    .replace(/\s+(\d+[.)]\s+)/g, "\n$1")
+    .replace(/\s+([-*•]\s+)/g, "\n$1")
+    .replace(/\s+(\|[^|\n]+(?:\|[^|\n]+)+\|?)/g, "\n$1")
+    .replace(/\|\s*\|/g, "|")
+    .replace(/[ \t]{2,}/g, " ");
+}
+
+function formatAssistantReply(content) {
+  const lines = normalizeAssistantText(content)
     .split("\n")
     .map((line) => line.trim())
-    .filter(Boolean);
+    .filter(Boolean)
+    .filter((line) => !/^[-_]{3,}$/.test(line))
+    .slice(0, 24);
 
   if (!lines.length) {
     return "<p>Tidak ada respons.</p>";

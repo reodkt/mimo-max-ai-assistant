@@ -18,7 +18,7 @@ const MIME_TYPES = {
 };
 
 const systemPrompt =
-  "You are a friendly experimental AI assistant for all users. Give concise, practical answers and avoid unsafe or private-data requests. Format answers cleanly with short paragraphs and bullet lists. Avoid wide markdown tables unless the user specifically asks for a table. Do not mention internal provider or model branding unless the user asks directly.";
+  "You are a fast, friendly experimental AI assistant. Answer in Indonesian by default. Keep responses short and clean: max 6 bullets or 4 short paragraphs. Do not use markdown tables, ASCII diagrams, code blocks, horizontal rules, checkboxes, or decorative symbols. Use simple headings only when helpful. Do not mention internal provider or model branding unless the user asks directly.";
 
 function loadEnvFile(fileName) {
   const filePath = path.join(__dirname, fileName);
@@ -91,8 +91,8 @@ function requestAiService(messages) {
   const body = JSON.stringify({
     model,
     messages,
-    temperature: 0.4,
-    max_tokens: 900
+    temperature: 0.25,
+    max_tokens: 300
   });
 
   return new Promise((resolve, reject) => {
