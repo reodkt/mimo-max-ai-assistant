@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Responsible AI assistant demo prepared for Mimo Max 1.6B API access review."
+    />
+    <title>Mimo Max AI Assistant</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">API access proposal demo</p>
+          <h1>Mimo Max 1.6B for practical Indonesian AI workflows.</h1>
+          <p class="lede">
+            This repository shows a credible, review-ready integration plan: a polished
+            assistant UI, a secure server-side API wrapper, clear use cases, and responsible
+            deployment notes for requesting Mimo API access.
+          </p>
+          <div class="hero-actions">
+            <a href="#demo">Try the demo</a>
+            <a class="secondary" href="#proposal">Read proposal</a>
+          </div>
+        </div>
+
+        <aside class="signal-card">
+          <p>Review highlights</p>
+          <ul>
+            <li>Server-side API key handling</li>
+            <li>Demo mode before credentials are approved</li>
+            <li>Responsible usage and rate-limit plan</li>
+            <li>Clear product roadmap for real users</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="metrics" aria-label="Project metrics">
+        <div>
+          <span>Target users</span>
+          <strong>Creators + UMKM</strong>
+        </div>
+        <div>
+          <span>Primary use</span>
+          <strong>AI productivity</strong>
+        </div>
+        <div>
+          <span>Safety</span>
+          <strong>Prompt guardrails</strong>
+        </div>
+      </section>
+
+      <section class="section-grid">
+        <div>
+          <p class="eyebrow">Why this deserves access</p>
+          <h2>Built to show real demand, not just an empty API test.</h2>
+        </div>
+        <div class="use-cases">
+          <article>
+            <h3>Indonesian business copilot</h3>
+            <p>
+              Generate product copy, customer replies, and market summaries for small teams
+              that need fast Indonesian-language output.
+            </p>
+          </article>
+          <article>
+            <h3>Long-context knowledge assistant</h3>
+            <p>
+              Prepare document summaries, structured briefs, and follow-up actions from large
+              internal notes with clear token budgeting.
+            </p>
+          </article>
+          <article>
+            <h3>Developer automation</h3>
+            <p>
+              Turn rough product requests into specs, API tasks, acceptance criteria, and test
+              plans for early-stage builders.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="demo-section" id="demo">
+        <div class="chat-card">
+          <div class="chat-header">
+            <span class="status-dot"></span>
+            <div>
+              <p class="eyebrow">Live API wrapper</p>
+              <h2>Mimo Max Assistant</h2>
+            </div>
+          </div>
+
+          <div class="message-list" id="messageList">
+            <div class="message assistant">
+              <span>Mimo</span>
+              <p>
+                Halo, saya demo Mimo Max. Kirim prompt untuk melihat alur chat, guardrail,
+                dan API wrapper yang siap disambungkan ke credential asli.
+              </p>
+            </div>
+          </div>
+
+          <div class="prompt-row">
+            <button type="button">Ringkas artikel teknis menjadi poin aksi untuk founder startup.</button>
+            <button type="button">Buat rencana customer support AI berbahasa Indonesia.</button>
+            <button type="button">Analisis ide produk AI untuk UMKM dan buat MVP 2 minggu.</button>
+          </div>
+
+          <form class="composer" id="chatForm">
+            <textarea
+              id="promptInput"
+              rows="4"
+              placeholder="Tulis prompt untuk Mimo Max..."
+            >Ringkas artikel teknis menjadi poin aksi untuk founder startup.</textarea>
+            <button type="submit" id="sendButton">Send prompt</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="section-grid proposal" id="proposal">
+        <div>
+          <p class="eyebrow">Access request</p>
+          <h2>Proposal for Mimo Max API approval.</h2>
+        </div>
+        <div class="use-cases">
+          <article>
+            <h3>Product goal</h3>
+            <p>
+              Build a reliable Indonesian-language productivity assistant for founders,
+              creators, and UMKM teams that need fast summarization, drafting, and planning.
+            </p>
+          </article>
+          <article>
+            <h3>Responsible rollout</h3>
+            <p>
+              API keys stay server-side, input length is capped, unsafe requests are guided by
+              the system prompt, and usage can be rate-limited before launch.
+            </p>
+          </article>
+          <article>
+            <h3>Initial milestones</h3>
+            <p>
+              Week 1: connect credentials. Week 2: test Indonesian prompts. Week 3: add
+              feedback. Week 4: release a limited beta.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

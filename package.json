@@ -1,0 +1,15 @@
+{
+  "name": "mimo-max-ai-assistant",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A production-minded AI assistant demo prepared for Mimo Max 1.6B API access review.",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
