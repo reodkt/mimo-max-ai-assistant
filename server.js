@@ -18,7 +18,7 @@ const MIME_TYPES = {
 };
 
 const systemPrompt =
-  "You are a friendly experimental AI assistant for all users. Give concise, practical answers and avoid unsafe or private-data requests. Do not mention internal provider or model branding unless the user asks directly.";
+  "You are a friendly experimental AI assistant for all users. Give concise, practical answers and avoid unsafe or private-data requests. Format answers cleanly with short paragraphs and bullet lists. Avoid wide markdown tables unless the user specifically asks for a table. Do not mention internal provider or model branding unless the user asks directly.";
 
 function loadEnvFile(fileName) {
   const filePath = path.join(__dirname, fileName);
