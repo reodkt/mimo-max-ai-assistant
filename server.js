@@ -18,7 +18,7 @@ const MIME_TYPES = {
 };
 
 const systemPrompt =
-  "You are Mimo Max inside a responsible AI productivity demo. Give concise, practical answers and avoid unsafe or private-data requests.";
+  "You are a friendly experimental AI assistant for all users. Give concise, practical answers and avoid unsafe or private-data requests. Do not mention internal provider or model branding unless the user asks directly.";
 
 function loadEnvFile(fileName) {
   const filePath = path.join(__dirname, fileName);
@@ -75,15 +75,15 @@ function readBody(request) {
   });
 }
 
-function requestMimo(messages) {
+function requestAiService(messages) {
   const apiKey = process.env.MIMO_API_KEY;
   const baseUrl = process.env.MIMO_BASE_URL;
-  const model = process.env.MIMO_MODEL || "mimo-max-1.6b";
+  const model = process.env.MIMO_MODEL || "mimo-v2.5-pro";
 
   if (!apiKey || !baseUrl) {
     return Promise.resolve({
       reply:
-        "Demo mode: add MIMO_API_KEY and MIMO_BASE_URL to .env.local or your shell environment to call the real Mimo API."
+        "Demo mode: add API credentials to .env.local or your shell environment to call the real AI service."
     });
   }
 
@@ -119,19 +119,19 @@ function requestMimo(messages) {
           try {
             payload = JSON.parse(responseBody);
           } catch {
-            reject(new Error("Mimo API returned a non-JSON response."));
+            reject(new Error("AI service returned a non-JSON response."));
             return;
           }
 
           if (apiResponse.statusCode < 200 || apiResponse.statusCode >= 300) {
-            reject(new Error(payload.error?.message || `Mimo API failed with ${apiResponse.statusCode}`));
+            reject(new Error(payload.error?.message || `AI service failed with ${apiResponse.statusCode}`));
             return;
           }
 
           resolve({
             reply:
               payload.choices?.[0]?.message?.content ||
-              "The Mimo API returned no message content for this request."
+              "The AI service returned no message content for this request."
           });
         });
       }
@@ -159,7 +159,7 @@ async function handleChat(request, response) {
       return;
     }
 
-    const completion = await requestMimo([
+    const completion = await requestAiService([
       { role: "system", content: systemPrompt },
       { role: "user", content: message }
     ]);
@@ -214,5 +214,5 @@ const server = http.createServer((request, response) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Mimo Max AI Assistant running at http://localhost:${PORT}`);
+  console.log(`AI Assistant For All running at http://localhost:${PORT}`);
 });

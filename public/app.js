@@ -9,7 +9,7 @@ function addMessage(role, content) {
   wrapper.className = `message ${role}`;
 
   const label = document.createElement("span");
-  label.textContent = role === "assistant" ? "Mimo" : "You";
+  label.textContent = role === "assistant" ? "Assistant" : "You";
 
   const text = document.createElement("p");
   text.textContent = content;
